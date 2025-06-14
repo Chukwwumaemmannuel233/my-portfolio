@@ -13,36 +13,36 @@ import {
 const experiences = [
   {
     title: "Senior Frontend Developer",
-    company: "Tech Solutions Inc.",
+    company: "SkillzSystems.",
     period: "2022 - Present",
     description:
       "Leading frontend development projects using React, Next.js, and TypeScript. Collaborated with cross-functional teams using Agile/Scrum methodologies.",
     achievements: [
       "Improved application performance by 40%",
       "Led a team of 3 junior developers",
-      "Implemented responsive designs for 15+ projects",
+      "Implemented responsive designs for 3+ projects",
     ],
   },
   {
     title: "Frontend Developer",
-    company: "Digital Agency Pro",
+    company: "Idonline Services",
     period: "2021 - 2022",
     description:
       "Developed responsive web applications and mobile apps using React Native. Worked closely with UI/UX designers to implement pixel-perfect designs.",
     achievements: [
-      "Built 10+ responsive web applications",
-      "Developed 3 React Native mobile apps",
+      "Built 1+ responsive web applications",
+      "Developed 1 React Native mobile apps",
       "Reduced development time by 30% through reusable components",
     ],
   },
   {
     title: "Junior Frontend Developer",
-    company: "StartUp Hub",
+    company: "K.A.V Textiles",
     period: "2020 - 2021",
     description:
       "Started my journey in web development, focusing on HTML, CSS, JavaScript, and React. Gained experience in version control with Git and project management tools.",
     achievements: [
-      "Completed 20+ landing pages",
+      "Built 1+ responsive web applications",
       "Learned modern development workflows",
       "Contributed to open-source projects",
     ],

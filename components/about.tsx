@@ -77,7 +77,7 @@ export default function About() {
               </div>
               <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
                 <h4 className="font-semibold text-purple-400 mb-2">Projects</h4>
-                <p className="text-gray-300">25+ Completed</p>
+                <p className="text-gray-300">10+ Completed</p>
               </div>
               <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
                 <h4 className="font-semibold text-green-400 mb-2">Specialization</h4>
