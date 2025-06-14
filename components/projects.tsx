@@ -50,7 +50,7 @@ const projects = [
     title: "Kudora",
     description:
       "Kudora is my e-commerce website where people can buy and sell products easily. It’s fast, secure, and user-friendly for both sellers and shoppers.",
-    image: "/images/kudora.png",
+    image: "/images/Kudora.png",
     tech: ["Next.js", "TypeScript", "Prisma", "Node.js", "PostgreSQL"],
     category: "Web Platform",
     status: "In Progress",
