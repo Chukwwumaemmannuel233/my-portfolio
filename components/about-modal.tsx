@@ -148,7 +148,7 @@ export default function AboutModal() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-orange-400">Fun Facts</h3>
             <ul className="space-y-2 text-gray-300">
-              <li>🚀 I've built over 25+ projects in the last 3 years</li>
+              <li>🚀 I've built over 10+ projects in the last 3 years</li>
               <li>☕ I code best with a good cup of coffee</li>
               <li>
                 🎨 I enjoy the creative process of turning designs into reality
