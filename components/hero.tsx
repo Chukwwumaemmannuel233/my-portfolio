@@ -71,13 +71,13 @@ export default function Hero() {
 
         <div className="flex justify-center space-x-6 mb-12">
           <a
-            href="#"
+            href="https://github.com/Chukwwumaemmannuel233"
             className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
           >
             <Github className="w-6 h-6" />
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/chukwuma-emmanuel-53386236b/"
             className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
           >
             <Linkedin className="w-6 h-6" />

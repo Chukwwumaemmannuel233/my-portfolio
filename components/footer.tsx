@@ -78,13 +78,13 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex space-x-6 mb-4 md:mb-0">
             <a
-              href="#"
+              href="https://github.com/Chukwwumaemmannuel233"
               className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
             >
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="#"
+            href="https://www.linkedin.com/in/chukwuma-emmanuel-53386236b/"
               className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
             >
               <Linkedin className="w-5 h-5" />
