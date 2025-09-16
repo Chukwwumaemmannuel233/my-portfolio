@@ -1,51 +1,85 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail, Phone } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  ArrowDown,
+  ArrowRight,
+} from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const words = [
+    "Full-Stack Developer",
+    "Problem Solver",
+    "Team Player",
+    "Good Communicator",
+    "Creative Thinker",
+  ];
+
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!deleting && subIndex < words[index].length) {
+        setSubIndex((prev) => prev + 1);
+      } else if (deleting && subIndex > 0) {
+        setSubIndex((prev) => prev - 1);
+      } else if (!deleting && subIndex === words[index].length) {
+        setDeleting(true);
+      } else if (deleting && subIndex === 0) {
+        setDeleting(false);
+        setIndex((prev) => (prev + 1) % words.length);
+      }
+    }, deleting ? 60 : 120);
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, deleting, index]);
+
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%239C92AC%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <section
+      className="relative min-h-screen flex items-center justify-center
+                 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900
+                 px-6 overflow-hidden pt-24"
+    >
+      {/* subtle glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.15),transparent_70%)] pointer-events-none" />
 
       <motion.div
-        initial={{ opacity: 0, x: 180 }} // deeper slide from below
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }} // custom ease for dramatic entrance
-        className="max-w-6xl mx-auto text-center relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="max-w-3xl mx-auto text-center relative z-10"
       >
-        <div className="mb-8">
-          <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-1">
-            <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-white text-3xl font-bold">
-              CUE
-            </div>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          Hi, I’m{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
             Chukwuma Ugwu Emmanuel
-          </h1>
-          <div className="space-y-2">
-            <p className="text-xl md:text-2xl text-gray-300 mb-4">
-              Frontend Developer & UI/UX Designer
-            </p>
-            <p className="text-lg text-blue-400 mb-8">
-              React • Next.js • TypeScript • Node.js
-            </p>
-          </div>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Passionate Frontend Developer with 3+ years of experience crafting
-            beautiful, responsive, and user-centered digital experiences. I
-            specialize in modern web technologies and love turning complex
-            problems into elegant solutions.
-          </p>
-        </div>
+          </span>
+        </h1>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <h2 className="text-xl md:text-2xl text-gray-300 h-8 mb-6">
+          {words[index].substring(0, subIndex)}
+          <span className="border-r-2 border-blue-400 ml-1 animate-pulse" />
+        </h2>
+
+        <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+          I build performant, scalable web applications with React, Next.js,
+          Node.js, TypeScript, Tailwind, and PostgreSQL—turning complex ideas
+          into elegant solutions.
+        </p>
+
+        {/* Main action buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
           <Button
             size="lg"
-            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0"
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 shadow-md"
             onClick={() =>
               document
                 .getElementById("projects")
@@ -54,52 +88,74 @@ export default function Hero() {
           >
             View My Work
           </Button>
+
           <Button
-            variant="outline"
             size="lg"
-            className="border-gray-600 text-gray-800 hover:bg-gray-800 hover:text-gray-200"
+            className="border-gray-500 text-gray-200 hover:bg-gray-800 hover:text-white shadow-sm"
             onClick={() =>
               window.open(
-                "mailto:echukwuma561@gmail.com?subject=Resume Request&body=Hi Chukwuma, I would like to request your resume.",
+                "mailto:echukwuma561@gmail.com?subject=Let’s Connect&body=Hi Chukwuma,",
                 "_blank"
               )
             }
           >
-            Request Resume
+            Get in Touch
           </Button>
         </div>
 
-        <div className="flex justify-center space-x-6 mb-12">
-          <a
-            href="https://github.com/Chukwwumaemmannuel233"
-            className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
+        {/* Stand-alone CV section */}
+        <div className="flex justify-end items-center max-w-3xl mx-auto mt-4 pr-2">
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ repeat: Infinity, repeatType: "mirror", duration: 1.5 }}
+            className="mr-2 text-blue-400"
           >
-            <Github className="w-6 h-6" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/chukwuma-emmanuel-53386236b/"
-            className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
+            <ArrowRight className="w-6 h-6" />
+          </motion.div>
+
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 shadow-md"
+            onClick={() =>
+              window.open("/Chukwuma-Emmanuel-CV.pdf", "_blank")
+            }
           >
-            <Linkedin className="w-6 h-6" />
-          </a>
-          <a
-            href="mailto:echukwuma561@gmail.com"
-            className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
-          >
-            <Mail className="w-6 h-6" />
-          </a>
-          <a
-            href="tel:+2348161770490"
-            className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
-          >
-            <Phone className="w-6 h-6" />
-          </a>
+            Get My CV
+          </Button>
         </div>
 
-        <div className="animate-bounce">
-          <ArrowDown className="w-6 h-6 mx-auto text-gray-500" />
+        {/* Social icons */}
+        <div className="flex justify-center space-x-6 mt-12 mb-12">
+          <Social href="https://github.com/Chukwwumaemmannuel233">
+            <Github className="w-5 h-5" />
+          </Social>
+          <Social href="https://www.linkedin.com/in/chukwuma-emmanuel-53386236b/">
+            <Linkedin className="w-5 h-5" />
+          </Social>
+          <Social href="mailto:echukwuma561@gmail.com">
+            <Mail className="w-5 h-5" />
+          </Social>
+          <Social href="tel:+2348161770490">
+            <Phone className="w-5 h-5" />
+          </Social>
         </div>
+
+        <ArrowDown className="w-6 h-6 mx-auto text-gray-500 animate-bounce" />
       </motion.div>
     </section>
+  );
+}
+
+function Social({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-400 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800"
+    >
+      {children}
+    </a>
   );
 }
