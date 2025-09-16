@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "I'm a passionate frontend developer skilled in HTML, CSS, JavaScript, React, and TypeScript. I build fast, responsive, and user-friendly websites and web apps that solve real-world problems.",
   icons: {
-        icon: "/favicon.ico",
+        icon: "/favicon.png",
   },
 };
 

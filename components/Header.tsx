@@ -47,9 +47,9 @@ export default function Header() {
         >
           <Link
             href="/"
-            className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+            className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center"
           >
-            CUE<span className="text-gray-400">Dev</span>
+           <span className="text-white font-bold text-sm">CUE</span>
           </Link>
         </motion.div>
 
