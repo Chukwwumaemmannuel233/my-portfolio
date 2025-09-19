@@ -6,11 +6,10 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);         // mobile menu
-  const [moreOpen, setMoreOpen] = useState(false); // desktop dropdown
-  const moreRef = useRef<HTMLDivElement>(null);    // ref for dropdown wrapper
+  const [open, setOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
@@ -38,7 +37,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 backdrop-blur-md border-b border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between h-16">
+      <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-16 overflow-x-hidden">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -49,7 +48,7 @@ export default function Header() {
             href="/"
             className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center"
           >
-           <span className="text-white font-bold text-sm">CUE</span>
+            <span className="text-white font-bold text-sm">CUE</span>
           </Link>
         </motion.div>
 
@@ -86,7 +85,7 @@ export default function Header() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded shadow-lg"
+                  className="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded shadow-lg z-50"
                 >
                   {extraLinks.map((l) => (
                     <Link
@@ -114,14 +113,14 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Nav (shows all links) */}
+      {/* Mobile Nav */}
       <AnimatePresence>
         {open && (
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden bg-gray-900/95 border-t border-gray-800 px-6 py-4 space-y-4"
+            className="lg:hidden bg-gray-900/95 border-t border-gray-800 px-4 py-4 space-y-4 overflow-x-hidden"
           >
             {[...mainLinks, ...extraLinks].map((link) => (
               <Link
