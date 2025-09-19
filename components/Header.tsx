@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 backdrop-blur-md border-b border-gray-800">
-      <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-16 overflow-x-hidden">
+      <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-16 overflow-visible">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -53,7 +53,7 @@ export default function Header() {
         </motion.div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex space-x-8 items-center relative">
+        <nav className="hidden lg:flex space-x-8 items-center relative z-50">
           {mainLinks.map((link, i) => (
             <motion.div
               key={link.name}
@@ -71,7 +71,7 @@ export default function Header() {
           ))}
 
           {/* More Dropdown */}
-          <div ref={moreRef} className="relative">
+          <div ref={moreRef} className="relative z-50">
             <button
               onClick={() => setMoreOpen((o) => !o)}
               className="flex items-center text-gray-300 hover:text-blue-400"
@@ -82,10 +82,11 @@ export default function Header() {
             <AnimatePresence>
               {moreOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded shadow-lg z-50"
+                  initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="absolute right-0 mt-2 min-w-max bg-gray-800 border border-gray-700 rounded shadow-lg z-50"
                 >
                   {extraLinks.map((l) => (
                     <Link
