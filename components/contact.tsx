@@ -39,8 +39,6 @@ export default function Contact() {
       email: formData.get("email"),
       company: formData.get("company"),
       projectType: formData.get("projectType"),
-      budget: formData.get("budget"),
-      timeline: formData.get("timeline"),
       subject: formData.get("subject"),
       message: formData.get("message"),
     }
@@ -175,9 +173,9 @@ export default function Contact() {
           >
             <Card className="bg-gray-800 border-gray-700 transition-all duration-300 hover:scale-[1.01] hover:border-blue-500 hover:shadow-lg">
               <CardHeader>
-                <CardTitle className="text-white">Project Brief</CardTitle>
+                <CardTitle className="text-white">Send a Message</CardTitle>
                 <CardDescription className="text-gray-400">
-                  Please include project type, budget and timeline so I can respond faster.
+                  Tell me about your project or just say hello. I'll get back to you soon!
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -193,7 +191,12 @@ export default function Contact() {
                     />
                   </div>
 
-                  <FormField name="company" type="text" label="Company / Organization" placeholder="Optional" />
+                  <FormField
+                    name="company"
+                    type="text"
+                    label="Company (Optional)"
+                    placeholder="Your company or organization"
+                  />
 
                   <SelectField
                     name="projectType"
@@ -202,26 +205,17 @@ export default function Contact() {
                     options={["Website", "Mobile App", "UI/UX Design", "Full-stack Development", "Other"]}
                   />
 
-                  <SelectField
-                    name="budget"
-                    label="Budget Range *"
-                    required
-                    options={["$500 – $1,000", "$1,000 – $5,000", "$5,000 – $10,000", "$10,000+"]}
-                  />
-
-                  <FormField name="timeline" type="text" label="Expected Timeline" placeholder="e.g. 6–8 weeks" />
-
                   <FormField name="subject" type="text" label="Subject *" placeholder="What's this about?" required />
 
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-gray-300">
-                      Project Details / Pitch *
+                      Message *
                     </Label>
                     <Textarea
                       id="message"
                       name="message"
                       required
-                      placeholder="Describe your project, goals, and key requirements..."
+                      placeholder="Tell me about your project, ideas, or just say hello..."
                       className="min-h-[140px] bg-gray-900 border-gray-600 text-white focus:border-blue-500"
                     />
                   </div>
